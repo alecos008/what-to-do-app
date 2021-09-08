@@ -1,0 +1,13 @@
+<h2>Login Page</h2>
+
+<form action="/auth/login" method="post">
+  <input
+    type="text"
+    name="email"
+    id="email"
+    placeholder="exmaple@example.com"
+  />
+  <input type="password" name="password" id="password" placeholder="password" />
+  <button type="submit">Log In!</button>
+</form>
+{{errorMessage}}
