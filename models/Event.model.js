@@ -20,6 +20,10 @@ const schema = new Schema({
     ref: "EventType",
     required: true,
   },
+  addedBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   location: {
     type: "Feature",
     geometry: {
