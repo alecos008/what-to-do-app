@@ -4,6 +4,8 @@ const UserModel = require("../models/User.model");
 const axios = require("axios");
 const bcrypt = require("bcryptjs");
 
+const hello = 0;
+
 // we need to configure the session :~)
 
 router.get("/signup", (req, res, next) => {
