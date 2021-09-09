@@ -20,6 +20,16 @@ const schema = new Schema({
     ref: "EventType",
     required: true,
   },
+  location: {
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [Number, Number],
+    },
+    properties: {
+      name: String,
+    },
+  },
 });
 
 module.exports = model("Event", schema);

@@ -1,22 +1,10 @@
 <h3>All Categories</h3>
-
-<div class="card">
+{{#each eventCategories}}
+  <div class="card">
     <div class="container">
-        <h4><b>Nightlife</b></h4>
-        <p>Parties, bars</p>
-    </div>
-</div>
 
-<div class="card">
-    <div class="container">
-        <h4><b>Sports</b></h4>
-        <p>Soccer, Basketball, Tennis</p>
+      <h4><b>{{this.name}}</b></h4>
+      <p>{{this.description}}</p>
     </div>
-</div>
-
-<div class="card">
-    <div class="container">
-        <h4><b>Gastronomy</b></h4>
-        <p>The best culinary experiences</p>
-    </div>
-</div>
+  </div>
+{{/each}}
