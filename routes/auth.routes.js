@@ -151,7 +151,7 @@ router.post("/login", (req, res, next) => {
           req.app.locals.isLoggedIn = true;
 
           //*  redirect the user to private route like '/profile'
-          res.redirect("/profile");
+          res.redirect("/events/categories");
         } else {
           res.render("auth/login.hbs", {
             errorMessage: "wrong password, try again",
@@ -166,6 +166,11 @@ router.post("/login", (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+});
+
+router.get("/logout", (req, res, next) => {
+  req.session.destroy();
+  res.redirect("/auth/login");
 });
 
 module.exports = router;
