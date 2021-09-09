@@ -142,7 +142,7 @@ router.post("/login", (req, res, next) => {
         //* Redirect the user to private route
         if (passwordCheck) {
           //*  If they do, Authenticate the user.Creating an active session
-          // req.session.loggedInUser = user;
+          req.session.loggedInUser = user;
 
           //* Creating global variables in HBS to help with auth
           req.app.locals.isLoggedIn = true;
