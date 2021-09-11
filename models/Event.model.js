@@ -12,7 +12,7 @@ const schema = new Schema({
     required: true,
   },
   date: {
-    type: date,
+    type: Date,
     required: true,
   },
   type: {
@@ -36,4 +36,6 @@ const schema = new Schema({
   },
 });
 
-module.exports = model("Event", schema);
+const Event = model("Event", schema);
+
+module.exports = Event;

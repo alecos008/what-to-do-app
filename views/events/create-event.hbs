@@ -1,0 +1,17 @@
+<h2>Create an Event</h2>
+
+<form action="/events/create-event" method="post">
+    <input type="text" name="name" id="name" placeholder="Name" /><br />
+    <textarea id="description" name="description" rows="4" cols="50">
+    Write down the description of your event.</textarea>
+<br>
+    <select name="location" id="location">
+        {{#each countries}}
+        <option value="{{this.alpha2Code}}">{{this.name}}</option>
+        {{/each}}
+    </select><br />
+    <input type="date" name="date" id="date" /><br />
+
+    <button type="submit">Create Event!</button>
+</form>
+
