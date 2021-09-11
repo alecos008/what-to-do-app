@@ -24,7 +24,7 @@ const schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  location: {
+  /* location: {
     type: "Feature",
     geometry: {
       type: "Point",
@@ -33,7 +33,7 @@ const schema = new Schema({
     properties: {
       name: String,
     },
-  },
+  }, */
 });
 
 const Event = model("Event", schema);

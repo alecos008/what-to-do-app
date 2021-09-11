@@ -1,0 +1,6 @@
+<h2>{{eventType.name}}</h2>
+
+{{#each eventList}}
+  <h4>{{this.name}}</h4>
+  <a href="/events/{{this._id}}">View event details</a>
+{{/each}}

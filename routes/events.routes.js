@@ -63,13 +63,32 @@ router.post("/create-event", (req, res, next) => {
       });
   }
 });
+// For event details
+router.get("/categories/:categoryId", (req, res, next) => {
+  const { categoryId } = req.params;
+  EventType.findById(categoryId)
+    .then((eventType) => {
+      Event.find()
+        .then((eventList) => {
+          res.render("events/category-events.hbs", { eventType, eventList });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
 router.get("/:id", (req, res, next) => {
-  res.render("events/categories.hbs/");
+  const { id } = req.params;
+  Event.findById(id)
+    .then((event) => {
+      res.render("events/details.hbs/", { event });
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
-
-router.get("/categories/:categoryName", (req, res, next) => {
-  res.render("events/categories.hbs/");
-});
-
 module.exports = router;
