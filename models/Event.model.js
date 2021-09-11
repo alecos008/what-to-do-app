@@ -15,25 +15,26 @@ const schema = new Schema({
     type: Date,
     required: true,
   },
-  type: {
-    type: Schema.Types.ObjectId,
-    ref: "EventType",
-    required: true,
-  },
-  addedBy: {
+  // type: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "EventType",
+  //   required: true,
+  // },
+  user_id: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  /* location: {
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: [Number, Number],
+  location: {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ["Point"], // 'location.type' must be 'Point'
+      required: true,
     },
-    properties: {
-      name: String,
+    coordinates: {
+      type: [Number],
+      required: true,
     },
-  }, */
+  },
 });
 
 const Event = model("Event", schema);

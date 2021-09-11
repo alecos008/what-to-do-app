@@ -13,7 +13,7 @@ router.get("/categories", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/create-event", (req, res, next) => {
+router.get("/create", isLoggedIn, (req, res, next) => {
   axios
     .get("https://restcountries.eu/rest/v2/all")
     .then((countries) => {
@@ -27,29 +27,28 @@ router.get("/create-event", (req, res, next) => {
   return;
 });
 
-router.post("/create-event", (req, res, next) => {
+router.post("/create", isLoggedIn, (req, res, next) => {
   const { name, description, date, location } = req.body;
+  const { _id: user_id = "" } = req.session.user;
+  const coordinates = req.body.location
+    .split(",")
+    .map((str) => Number(str))
+    .reverse();
+  console.log("These are the coordinates:", coordinates);
 
   //* User must fill all the fields in order to create the event
-  if (!name || !description || !date || !location) {
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then((countries) => {
-        res.render("auth/signup.hbs", {
-          countries: countries.data,
-          errorMessage: "Please fill all the fields",
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
-    return;
+  if (!name || !description || !date || !location || !user_id) {
+    res.redirect("/events/create");
   } else {
     Event.create({
+      user_id,
       name,
       description,
       date,
-      location,
+      location: {
+        coordinates,
+        type: "Point",
+      },
     })
       .then((event) => {
         console.log(`Here is the event ${event}`);

@@ -10,10 +10,13 @@
 
   <body>
     <nav>
+      {{#if isLoggedIn }}
+      <a href="/auth/logout">Log out</a>
+     <a href="/events/create">Create Event</a>
+      {{ else }}
       <a href="/auth/signup">Sign up</a>
       <a href="/auth/login">Log in</a>
-      <a href="/auth/logout">Log out</a>
-     <a href="/events/create-event">Create Event</a>
+      {{/if }}
     <a href="/events/categories">Event Categories</a>
     </nav>
     {{{body}}}

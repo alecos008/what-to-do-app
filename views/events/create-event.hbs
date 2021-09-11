@@ -1,6 +1,6 @@
 <h2>Create an Event</h2>
 
-<form action="/events/create-event" method="post">
+<form action="/events/create" method="post">
   <input type="text" name="name" id="name" placeholder="Name" /><br />
   <textarea
     id="description"
@@ -12,7 +12,7 @@
   <br />
   <select name="location" id="location">
     {{#each countries}}
-      <option value="{{this.alpha2Code}}">{{this.name}}</option>
+      <option value="{{this.latlng}}">{{this.name}}</option>
     {{/each}}
   </select><br />
   <input type="date" name="date" id="date" /><br />

@@ -143,7 +143,7 @@ router.post("/login", (req, res, next) => {
         //* Redirect the user to private route
         if (passwordCheck) {
           //*  If they do, Authenticate the user.Creating an active session
-          req.session.loggedInUser = user;
+          req.session.user = user;
 
           //* Creating global variables in HBS to help with auth
           req.app.locals.isLoggedIn = true;
@@ -168,6 +168,7 @@ router.post("/login", (req, res, next) => {
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
+  req.app.locals.isLoggedIn = false;
   res.redirect("/auth/login");
 });
 
