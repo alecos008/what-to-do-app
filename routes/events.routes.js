@@ -17,10 +17,14 @@ router.get("/create", isLoggedIn, (req, res, next) => {
   axios
     .get("https://restcountries.eu/rest/v2/all")
     .then((countries) => {
-      res.render("events/create-event.hbs", {
-        countries: countries.data,
+      EventType.find().then((eventCategories) => {
+        res.render("events/create-event.hbs", {
+          countries: countries.data,
+          eventCategories,
+        });
       });
     })
+    .catch((err) => next(err))
     .catch((err) => {
       next(err);
     });

@@ -10,14 +10,15 @@
 
   <body>
     <nav>
-      {{#if isLoggedIn }}
-      <a href="/auth/logout">Log out</a>
-     <a href="/events/create">Create Event</a>
-      {{ else }}
-      <a href="/auth/signup">Sign up</a>
-      <a href="/auth/login">Log in</a>
-      {{/if }}
-    <a href="/events/categories">Event Categories</a>
+      {{#if isLoggedIn}}
+        <a href="/auth/logout">Log out</a>
+        <a href="/events/create">Create Event</a>
+      {{else}}
+        <a href="/auth/signup">Sign up</a>
+        <a href="/auth/login">Log in</a>
+      {{/if}}
+      <a href="/events/categories">Event Categories</a>
+      <a href="/">Home</a>
     </nav>
     {{{body}}}
 
