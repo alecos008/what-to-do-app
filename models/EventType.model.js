@@ -10,9 +10,11 @@ const schema = new Schema({
     type: String,
     required: true,
   },
+  imageUrl: {
+    type: String,
+  },
 });
 
 const EventType = model("EventType", schema);
 
 module.exports = EventType;
-

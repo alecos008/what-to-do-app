@@ -9,17 +9,21 @@
   </head>
 
   <body>
-    <nav>
-      {{#if isLoggedIn}}
-        <a href="/auth/logout">Log out</a>
-        <a href="/events/create">Create Event</a>
-      {{else}}
-        <a href="/auth/signup">Sign up</a>
-        <a href="/auth/login">Log in</a>
-      {{/if}}
-      <a href="/events/categories">Event Categories</a>
-      <a href="/">Home</a>
-    </nav>
+
+    <header class="header">
+      <nav class="navbar">
+        <a class="nav-link" href="/">Home</a>
+        {{#if isLoggedIn}}
+          <a class="nav-link" href="/auth/logout">Log out</a>
+          <a class="nav-link" href="/events/create">Create Event</a>
+        {{else}}
+          <a class="nav-link" href="/auth/signup">Sign up</a>
+          <a class="nav-link" href="/auth/login">Log in</a>
+        {{/if}}
+        <a class="nav-link" href="/events/categories">Event Categories</a>
+      </nav>
+
+    </header>
     {{{body}}}
 
     <script src="/js/script.js"></script>

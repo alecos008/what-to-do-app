@@ -1,2 +1,23 @@
-<h1>{{title}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<div class="index-section">
+  <h1>What to do?</h1>
+  <p>Welcome to What-to-do World Traveler. Here you will find out "What-To-Do"
+    in any country you visit.</p>
+</div>
+
+{{! FORM FOR ADDING CATEGORY IMAGE USING CLOUDINARY }}
+{{! <form action="/" method="post" enctype="multipart/form-data">
+  <input type="text" name="name" id="name" />
+  <input type="text" name="description" id="description" />
+  <input type="file" name="imageUrl" id="imageUrl" />
+  <button type="submit">add category</button>
+</form> }}
+
+<div class="categories-section">
+  {{#each categories}}
+    <h2>{{this.name}}</h2>
+    <img src="{{this.imageUrl}}" alt="Category Image" width="250px" />
+    <p>{{this.description}}</p>
+    <a class="category-link" href="/events/categories/{{this._id}}">See all
+      events</a>
+  {{/each}}
+</div>
