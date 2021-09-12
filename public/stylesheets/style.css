@@ -19,13 +19,16 @@
   background-color: black;
   display: flex;
   align-items: center;
+  width: 98.9vw;
+  justify-content: center;
 }
+
 a {
   text-decoration: none;
 }
 .nav-link {
   color: white;
-  margin-left: 20px;
+  margin-left: 7px;
 }
 .index-section > p {
   text-align: center;
@@ -50,15 +53,32 @@ p {
   align-items: center;
   padding-top: 10px;
 }
+.categories-section > h2,
+img,
+a,
+p {
+  margin-bottom: 10px;
+}
+
 .category-link {
   color: green;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 20px 4px;
+  margin: 0 0 10px 0;
 }
 /* Here we fix the display of the main p and navbar */
 @media (max-width: 400px) {
   .index-section > p {
     width: 310px;
   }
-  .nav-link {
-    margin-left: 10px;
+  .header {
+    width: 100vw;
   }
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

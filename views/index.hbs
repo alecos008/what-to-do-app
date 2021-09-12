@@ -13,11 +13,14 @@
 </form> }}
 
 <div class="categories-section">
-  {{#each categories}}
-    <h2>{{this.name}}</h2>
-    <img src="{{this.imageUrl}}" alt="Category Image" width="250px" />
-    <p>{{this.description}}</p>
-    <a class="category-link" href="/events/categories/{{this._id}}">See all
-      events</a>
-  {{/each}}
+  <section class="category">
+    {{#each categories}}
+      <h2>{{this.name}}</h2>
+      <img src="{{this.imageUrl}}" alt="Category Image" width="250px" />
+      <p>{{this.description}}</p>
+      <a class="category-link" href="/events/categories/{{this._id}}">See all
+        events</a>
+    {{/each}}
+
+  </section>
 </div>
