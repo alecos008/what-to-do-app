@@ -7,7 +7,7 @@ body {
   background-color: #3c2d6d;
 }
 .index-section {
-  height: 82vh;
+  height: 90vh;
   background-image: url("/images/index-bg-img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -111,7 +111,7 @@ p {
   border-radius: 50px 50px;
   padding-left: 10px;
 }
-#file {
+#imageUrl {
   border: 1px solid green;
   border-radius: 25px 25px;
   background-color: white;

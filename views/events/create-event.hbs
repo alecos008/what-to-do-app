@@ -15,13 +15,13 @@
   </select><br />
   <input type="datetime-local" name="date" id="date" /><br />
 
-  <select name="event-type" id="select-type">
+  <select name="type" id="select-type">
     {{#each eventCategories}}
       <option value="{{this._id}}" id="type">{{this.name}}</option>
     {{/each}}
   </select><br />
 
-  <input type="file" name="imageUrl" id="file" /><br />
+  <input type="file" name="imageUrl" id="imageUrl" /><br />
 
   <button type="submit" id="create-event-btn">Create Event!</button>
 </form>

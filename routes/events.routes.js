@@ -26,8 +26,8 @@ router.get("/create", isLoggedIn, (req, res, next) => {
 
 router.post(
   "/create",
-  isLoggedIn,
   fileUploader.single("imageUrl"),
+  isLoggedIn,
   (req, res, next) => {
     const { name, description, date, type, location } = req.body;
     const { _id: user_id = "" } = req.session.user;
@@ -36,20 +36,10 @@ router.post(
       .map((str) => Number(str))
       .reverse();
 
-    let imageUrl;
+    //! let imageUrl = req.file.path; => RETURNS CAN NOT READ PROPERTY OF UNDEFINED
+    //console.log("req . file =", req);
 
-    if (req.file) {
-      imageUrl = req.file.path;
-    }
-    //* Here we have an error type and imageUrl is undefined
-    console.log("These are the coordinates:", coordinates, {
-      name,
-      description,
-      date,
-      type,
-      location,
-      imageUrl,
-    });
+    console.log("Image url", imageUrl); //* Here we have an error type and imageUrl is undefined
 
     //* User must fill all the fields in order to create the event
     if (!name || !description || !date || !location || !user_id || !imageUrl) {
