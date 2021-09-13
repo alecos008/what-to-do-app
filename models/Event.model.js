@@ -34,6 +34,10 @@ const schema = new Schema({
       type: [Number],
       required: true,
     },
+    isAttending: {
+      type: [Boolean],
+      default: false,
+    },
   },
 });
 

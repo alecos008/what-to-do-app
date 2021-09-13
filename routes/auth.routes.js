@@ -149,7 +149,7 @@ router.post("/login", (req, res, next) => {
           req.app.locals.isLoggedIn = true;
 
           //*  redirect the user to private route like '/profile'
-          res.redirect("/events/categories");
+          res.redirect("/");
         } else {
           res.render("auth/login.hbs", {
             errorMessage: "wrong password, try again",
