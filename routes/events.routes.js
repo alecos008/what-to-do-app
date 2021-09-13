@@ -38,7 +38,10 @@ router.post(
 
     //! let imageUrl = req.file.path; => RETURNS CAN NOT READ PROPERTY OF UNDEFINED
     //console.log("req . file =", req);
-
+    let imageUrl;
+    if (req.file) {
+      imageUrl = req.file.path;
+    }
     console.log("Image url", imageUrl); //* Here we have an error type and imageUrl is undefined
 
     //* User must fill all the fields in order to create the event
@@ -50,7 +53,10 @@ router.post(
         name,
         description,
         date,
-        location: coordinates,
+        location: {
+          coordinates,
+          type: "Point",
+        },
         imageUrl,
         type,
       })
