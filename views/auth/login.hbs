@@ -1,13 +1,18 @@
-<h2>Login Page</h2>
+<h2 class="page-title">Login</h2>
 
-<form action="/auth/login" method="post">
+<form action="/auth/login" method="post" id="login-form">
   <input
     type="text"
     name="email"
     id="email"
     placeholder="exmaple@example.com"
-  />
-  <input type="password" name="password" id="password" placeholder="password" />
-  <button type="submit">Log In!</button>
+  /><br />
+  <input
+    type="password"
+    name="password"
+    id="password"
+    placeholder="password"
+  /><br />
+  <button type="submit" id="login-btn">Log In!</button>
 </form>
-{{errorMessage}}
+<p class="error-msg">{{errorMessage}}</p>

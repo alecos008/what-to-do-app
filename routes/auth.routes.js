@@ -169,7 +169,7 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
   req.app.locals.isLoggedIn = false;
-  res.redirect("/auth/login");
+  res.redirect("/");
 });
 
 module.exports = router;

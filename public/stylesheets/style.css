@@ -3,8 +3,11 @@
   padding: 0;
   font-family: sans-serif, Helvetica, Arial;
 }
+body {
+  background-color: #3c2d6d;
+}
 .index-section {
-  height: 90vh;
+  height: 82vh;
   background-image: url("/images/index-bg-img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,11 +56,13 @@ p {
   align-items: center;
   padding-top: 10px;
 }
-.categories-section > h2,
-img,
+.category > img,
 a,
 p {
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
+}
+.category > h2 {
+  margin: 20px 0 5px 0;
 }
 
 .category-link {
@@ -81,4 +86,55 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#signup-form,
+#login-form,
+#create-event-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4vh;
+  align-items: center;
+}
+.page-title {
+  margin-top: 5vh;
+  margin-left: 5vw;
+}
+#name,
+#email,
+#location,
+#password,
+#date,
+#select-type {
+  height: 5vh;
+  width: 90vw;
+  border: 1px solid green;
+  border-radius: 50px 50px;
+  padding-left: 10px;
+}
+#file {
+  border: 1px solid green;
+  border-radius: 25px 25px;
+  background-color: white;
+}
+#description {
+  border: 1px solid green;
+  border-radius: 25px 25px;
+  padding-left: 5vw;
+}
+#signup-btn,
+#login-btn,
+#create-event-btn {
+  width: 20vw;
+  height: 5vh;
+  background-color: whitesmoke;
+  color: green;
+  border: 1px solid green;
+  border-radius: 20px 4px;
+}
+.error-msg {
+  margin: 2.5vh 0 0 5vw;
+  font-size: 16px;
+  color: red;
+  font-weight: 700;
+  font-style: italic;
 }

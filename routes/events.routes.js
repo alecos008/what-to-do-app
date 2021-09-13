@@ -4,14 +4,7 @@ const axios = require("axios");
 const UserModel = require("../models/User.model");
 const EventType = require("../models/EventType.model");
 const Event = require("../models/Event.model");
-
-router.get("/categories", (req, res, next) => {
-  EventType.find()
-    .then((eventCategories) => {
-      res.render("events/categories", { eventCategories });
-    })
-    .catch((err) => next(err));
-});
+const fileUploader = require("../middlewares/cloudinary.config");
 
 router.get("/create", isLoggedIn, (req, res, next) => {
   axios
@@ -31,41 +24,59 @@ router.get("/create", isLoggedIn, (req, res, next) => {
   return;
 });
 
-router.post("/create", isLoggedIn, (req, res, next) => {
-  const { name, description, date, location } = req.body;
-  const { _id: user_id = "" } = req.session.user;
-  const coordinates = req.body.location
-    .split(",")
-    .map((str) => Number(str))
-    .reverse();
-  console.log("These are the coordinates:", coordinates);
+router.post(
+  "/create",
+  isLoggedIn,
+  fileUploader.single("imageUrl"),
+  (req, res, next) => {
+    const { name, description, date, type, location } = req.body;
+    const { _id: user_id = "" } = req.session.user;
+    const coordinates = req.body.location
+      .split(",")
+      .map((str) => Number(str))
+      .reverse();
 
-  //* User must fill all the fields in order to create the event
-  if (!name || !description || !date || !location || !user_id) {
-    res.redirect("/events/create");
-  } else {
-    Event.create({
-      user_id,
+    let imageUrl;
+
+    if (req.file) {
+      imageUrl = req.file.path;
+    }
+    //* Here we have an error type and imageUrl is undefined
+    console.log("These are the coordinates:", coordinates, {
       name,
       description,
       date,
-      location: {
-        coordinates,
-        type: "Point",
-      },
-    })
-      .then((event) => {
-        console.log(`Here is the event ${event}`);
+      type,
+      location,
+      imageUrl,
+    });
 
-        //redirecting to log in page
-
-        res.redirect("/events/categories");
+    //* User must fill all the fields in order to create the event
+    if (!name || !description || !date || !location || !user_id || !imageUrl) {
+      res.redirect("/events/create");
+    } else {
+      Event.create({
+        user_id,
+        name,
+        description,
+        date,
+        location: coordinates,
+        imageUrl,
+        type,
       })
-      .catch((err) => {
-        next(err);
-      });
+        .then((event) => {
+          console.log(`Here is the event ${event}`);
+
+          //redirecting to log in page
+
+          res.redirect("/");
+        })
+        .catch((err) => {
+          next(err);
+        });
+    }
   }
-});
+);
 // For event details
 router.get("/categories/:categoryId", (req, res, next) => {
   const { categoryId } = req.params;

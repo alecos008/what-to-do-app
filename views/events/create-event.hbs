@@ -1,5 +1,5 @@
-<form action="/events/create" method="post">
-  <input type="text" name="name" id="name" placeholder="Name" /><br />
+<form action="/events/create" method="post" id="create-event-form">
+  <input type="text" name="name" id="name" placeholder="Event name" /><br />
   <textarea
     id="description"
     name="description"
@@ -15,11 +15,14 @@
   </select><br />
   <input type="datetime-local" name="date" id="date" /><br />
 
-  <select name="event-type">
+  <select name="event-type" id="select-type">
     {{#each eventCategories}}
-      <option value="{{this._id}}">{{this.name}}</option>
+      <option value="{{this._id}}" id="type">{{this.name}}</option>
     {{/each}}
-  </select>
+  </select><br />
 
-  <button type="submit">Create Event!</button>
+  <input type="file" name="imageUrl" id="file" /><br />
+
+  <button type="submit" id="create-event-btn">Create Event!</button>
 </form>
+<p class="error-msg">{{errorMessage}}</p>

@@ -15,11 +15,11 @@ const schema = new Schema({
     type: Date,
     required: true,
   },
-  // type: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "EventType",
-  //   required: true,
-  // },
+  type: {
+    type: Schema.Types.ObjectId,
+    ref: "EventType",
+    required: true,
+  },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -34,10 +34,10 @@ const schema = new Schema({
       type: [Number],
       required: true,
     },
-    isAttending: {
-      type: [Boolean],
-      default: false,
-    },
+  },
+  imageUrl: {
+    type: String,
+    required: true,
   },
 });
 
