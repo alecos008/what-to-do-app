@@ -5,7 +5,7 @@ const UserModel = require("../models/User.model");
 const EventType = require("../models/EventType.model");
 const Event = require("../models/Event.model");
 const fileUploader = require("../middlewares/cloudinary.config");
-
+//some commment
 router.get("/create", isLoggedIn, (req, res, next) => {
   axios
     .get("https://restcountries.eu/rest/v2/all")
@@ -103,5 +103,3 @@ router.get("/:id", (req, res, next) => {
 });
 
 module.exports = router;
-
-
