@@ -104,14 +104,4 @@ router.get("/:id", (req, res, next) => {
 
 module.exports = router;
 
-// COUNTER FOR PEOPLE ATTENDING
 
-const myButton = document.getElementById("isAttending");
-const myOutput = document.getElementById("myOutput");
-
-let counter = 0;
-
-function addToNumber() {
-  myOutput.innerHTML = `${1 + counter++}`;
-}
-myButton.onclick = addToNumber;

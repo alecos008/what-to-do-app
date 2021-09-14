@@ -138,3 +138,7 @@ p {
   font-weight: 700;
   font-style: italic;
 }
+
+#mapid {
+  height: 180px;
+}
