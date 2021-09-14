@@ -42,7 +42,7 @@ router.post(
     if (req.file) {
       imageUrl = req.file.path;
     }
-    console.log("Image url", imageUrl); //* Here we have an error type and imageUrl is undefined
+    console.log("Image url", imageUrl, "type:", type); //* Here we have an error type and imageUrl is undefined
 
     //* User must fill all the fields in order to create the event
     if (!name || !description || !date || !location || !user_id || !imageUrl) {
