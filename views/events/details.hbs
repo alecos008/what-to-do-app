@@ -4,9 +4,10 @@
 
 <h3>{{event.date}}</h3>
 
-<h4>There are currently
-  <span id="myOutput"></span>
-  people attending this event.</h4>
-<form action="/events/attendance/increase" method="post">
-  <button type="submit" id="isAttending">I am going!</button>
-</form>
+<h4>There are currently {{event.attendance}} people attending this event.</h4>
+
+{{#if isLoggedIn}}
+  <form action="/events/{{event._id}}/attendance/increase" method="post">
+    <button type="submit" id="isAttending">I am going!</button>
+  </form>
+{{/if}}

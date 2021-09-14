@@ -78,7 +78,7 @@ router.get("/categories/:categoryId", (req, res, next) => {
   const { categoryId } = req.params;
   EventType.findById(categoryId)
     .then((eventType) => {
-      Event.find()
+      Event.find({ type: categoryId })
         .then((eventList) => {
           res.render("events/category-events.hbs", { eventType, eventList });
         })
@@ -96,6 +96,18 @@ router.get("/:id", (req, res, next) => {
   Event.findById(id)
     .then((event) => {
       res.render("events/details.hbs/", { event });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
+  Event.findByIdAndUpdate(id, { $inc: { attendance: 1 } }, { new: true })
+    .then((updated) => {
+      //console.log(updated);
+      res.redirect(`/events/${id}`);
     })
     .catch((err) => {
       next(err);
