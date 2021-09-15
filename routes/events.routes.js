@@ -37,7 +37,7 @@ router.post(
       .reverse();
 
     //! let imageUrl = req.file.path; => RETURNS CAN NOT READ PROPERTY OF UNDEFINED
-    //console.log("req . file =", req);
+    console.log(coordinates);
     let imageUrl;
     if (req.file) {
       imageUrl = req.file.path;
