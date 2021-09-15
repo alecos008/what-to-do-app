@@ -39,6 +39,11 @@ const schema = new Schema({
     type: String,
     required: true,
   },
+  attendance: {
+    type: Number,
+    default: 0,
+    min: 0,
+  },
 });
 
 const Event = model("Event", schema);

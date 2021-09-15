@@ -1,9 +1,13 @@
 <h2>{{event.name}}</h2>
-<img src="{{this.imageUrl}}" alt="" width="250px" />
+<img src="{{event.imageUrl}}" alt="" width="250px" />
 <h3>{{event.description}}</h3>
 
 <h3>{{event.date}}</h3>
 
-<h4>There are currently <p id="myOutput"></p> people attending this event.</h4>
-<button type="submit" id="isAttending">I am going!</button>
-<script></script>
+<h4>There are currently {{event.attendance}} people attending this event.</h4>
+
+{{#if isLoggedIn}}
+  <form action="/events/{{event._id}}/attendance/increase" method="post">
+    <button type="submit" id="isAttending">I am going!</button>
+  </form>
+{{/if}}

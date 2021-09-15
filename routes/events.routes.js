@@ -5,7 +5,7 @@ const UserModel = require("../models/User.model");
 const EventType = require("../models/EventType.model");
 const Event = require("../models/Event.model");
 const fileUploader = require("../middlewares/cloudinary.config");
-
+//some commment
 router.get("/create", isLoggedIn, (req, res, next) => {
   axios
     .get("https://restcountries.eu/rest/v2/all")
@@ -42,7 +42,7 @@ router.post(
     if (req.file) {
       imageUrl = req.file.path;
     }
-    console.log("Image url", imageUrl); //* Here we have an error type and imageUrl is undefined
+    console.log("Image url", imageUrl, "type:", type); //* Here we have an error type and imageUrl is undefined
 
     //* User must fill all the fields in order to create the event
     if (!name || !description || !date || !location || !user_id || !imageUrl) {
@@ -78,7 +78,7 @@ router.get("/categories/:categoryId", (req, res, next) => {
   const { categoryId } = req.params;
   EventType.findById(categoryId)
     .then((eventType) => {
-      Event.find()
+      Event.find({ type: categoryId })
         .then((eventList) => {
           res.render("events/category-events.hbs", { eventType, eventList });
         })
@@ -102,6 +102,16 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
+router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
+  const { id } = req.params;
+  Event.findByIdAndUpdate(id, { $inc: { attendance: 1 } }, { new: true })
+    .then((updated) => {
+      //console.log(updated);
+      res.redirect(`/events/${id}`);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;
-
-
