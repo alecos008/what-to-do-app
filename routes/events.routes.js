@@ -91,11 +91,15 @@ router.get("/categories/:categoryId", (req, res, next) => {
     });
 });
 
+router.get("/near-you", (req, res, next) => {
+  res.render("events/near-you");
+});
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
   Event.findById(id)
     .then((event) => {
-      res.render("events/details.hbs/", { event });
+      res.render("events/details.hbs", { event });
     })
     .catch((err) => {
       next(err);
@@ -113,5 +117,6 @@ router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
       next(err);
     });
 });
+
 
 module.exports = router;
