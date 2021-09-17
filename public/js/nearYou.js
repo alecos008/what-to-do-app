@@ -30,3 +30,5 @@ document.addEventListener(
   },
   false
 );
+
+console.log(navigator.geolocation.getCurrentPosition(position));
