@@ -1,1 +1,11 @@
 <div id="nearYou"></div>
+{{#each eventsHbs}}
+  <h2>{{this.name}}</h2>
+  <a class="category-link" href="/events/{{this._id}}">View more</a>
+{{/each}}
+<script>
+  const allEvents =
+  {{{events}}}
+</script>
+<script src="/js/mapUtilities.js"></script>
+<script src="/js/nearYou.js"></script>

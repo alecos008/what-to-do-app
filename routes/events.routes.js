@@ -5,7 +5,7 @@ const UserModel = require("../models/User.model");
 const EventType = require("../models/EventType.model");
 const Event = require("../models/Event.model");
 const fileUploader = require("../middlewares/cloudinary.config");
-//some commment
+
 router.get("/create", isLoggedIn, (req, res, next) => {
   axios
     .get("https://restcountries.eu/rest/v2/all")
@@ -29,12 +29,18 @@ router.post(
   fileUploader.single("imageUrl"),
   isLoggedIn,
   (req, res, next) => {
-    const { name, description, date, type, location } = req.body;
+    const { name, description, date, type, latitude, longitude, location } =
+      req.body;
     const { _id: user_id = "" } = req.session.user;
-    const coordinates = req.body.location
-      .split(",")
-      .map((str) => Number(str))
-      .reverse();
+    let coordinates;
+    if (!longitude && !latitude) {
+      coordinates = location
+        .split(",")
+        .map((str) => Number(str))
+        .reverse();
+    } else {
+      coordinates = [latitude, longitude];
+    }
 
     //! let imageUrl = req.file.path; => RETURNS CAN NOT READ PROPERTY OF UNDEFINED
     console.log(coordinates);
@@ -92,7 +98,14 @@ router.get("/categories/:categoryId", (req, res, next) => {
 });
 
 router.get("/near-you", (req, res, next) => {
-  res.render("events/near-you");
+  Event.find()
+    .then((events) => {
+      res.render("events/near-you", {
+        events: JSON.stringify(events),
+        eventsHbs: events,
+      });
+    })
+    .catch((err) => next(err));
 });
 
 router.get("/:id", (req, res, next) => {
@@ -117,6 +130,5 @@ router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
       next(err);
     });
 });
-
 
 module.exports = router;
