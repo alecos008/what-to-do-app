@@ -82,19 +82,14 @@ router.post(
 // For event details
 router.get("/categories/:categoryId", (req, res, next) => {
   const { categoryId } = req.params;
-  EventType.findById(categoryId)
-    .then((eventType) => {
-      Event.find({ type: categoryId })
-        .then((eventList) => {
-          res.render("events/category-events.hbs", { eventType, eventList });
-        })
-        .catch((err) => {
-          next(err);
-        });
+  Event.find({ type: categoryId })
+    .then((events) => {
+      res.render("events/near-you.hbs", {
+        events: JSON.stringify(events),
+        eventsHbs: events,
+      });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch((err) => next(err));
 });
 
 router.get("/near-you", (req, res, next) => {
