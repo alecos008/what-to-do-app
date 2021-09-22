@@ -33,6 +33,7 @@ a {
 .nav-link {
   color: white;
   margin-left: 0px;
+  display: flex;
 }
 .index-section > p {
   text-align: center;
@@ -204,4 +205,45 @@ p {
   100% {
     transform: scale(0.8);
   }
+}
+
+/*Nico styles*/
+ 
+.card-text {
+  color: black
+}
+
+.card-date {
+  size: 12px
+}
+
+.card {
+  margin: 0 auto;
+  background-color:rgba(165, 191, 227, 1);
+  width: 70%
+  
+}
+
+
+
+.btn-primary {
+  background-color: rgba(243, 150, 193, 0.87);
+  
+}
+
+#event-attendance {
+  font-size: 10px;
+}
+#event-date {
+  font-size: 12px;
+}
+
+.navbar :before {
+  content: "|";
+  padding: 0 10px;
+}
+
+#nav-icon {
+  padding-right: 10px;
+
 }

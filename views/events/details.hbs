@@ -1,13 +1,18 @@
-<h2>{{event.name}}</h2>
-<img src="{{event.imageUrl}}" alt="" width="250px" />
-<h3>{{event.description}}</h3>
-
-<h3>{{event.date}}</h3>
-
-<h4>There are currently {{event.attendance}} people attending this event.</h4>
-
-{{#if isLoggedIn}}
-  <form action="/events/{{event._id}}/attendance/increase" method="post">
-    <button type="submit" id="isAttending">I am going!</button>
-  </form>
-{{/if}}
+<br>
+<div class="card" style="">
+  <img src="{{event.imageUrl}}" class="card-img-top" alt="..." width="250px">
+  <div class="card-body">
+    <h5 class="card-title">{{event.name}}</h5>
+    <hr noshade>
+    <h4 class="card-date" id="event-date">{{event.date}}</h4>
+    <p class="card-text">{{event.description}}
+    </p>
+<hr noshade>
+    <p class="card-text" id="event-attendance">There are currently {{event.attendance}} people attending this event.</p>
+    {{#if isLoggedIn}}
+    <form action="/events/{{event._id}}/attendance/increase" method="post">
+      <button type="submit" class="btn btn-primary" id="isAttending">I am going!</button>
+    </form>
+    {{/if}}
+  </div>
+</div>
