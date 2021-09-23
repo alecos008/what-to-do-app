@@ -88,6 +88,7 @@ router.get("/categories/:categoryId", (req, res, next) => {
         events: JSON.stringify(events),
         eventsHbs: events,
       });
+      console.log(events);
     })
     .catch((err) => next(err));
 });
@@ -124,6 +125,16 @@ router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+});
+
+router.post('/:id/delete', isLoggedIn, (req, res, next) => {
+   Event.findByIdAndDelete(req.params.id)
+   .then(() => {
+    res.redirect('/')
+  })
+  .catch((err) => {
+    console.log("error deleting the event", err)
+  })
 });
 
 module.exports = router;

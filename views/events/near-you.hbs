@@ -1,8 +1,16 @@
 <div id="nearYou"></div>
 {{#each eventsHbs}}
-  <h2>{{this.name}}</h2>
-  <a class="nav-link" href="/events/{{this._id}}">View more</a>
+<div class="card" id="near-you-card">
+  <h5 class="card-header">{{this.name}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{this.description}}</h5>
+    <p class="card-text">{{this.attendance}} People Going!</p>
+    <a href="/events/{{this._id}}" class="btn btn-primary">See Details</a>
+    <p id="event-date">{{this.date}}</p>
+  </div>
+</div>
 {{/each}}
+
 <script>
   const allEvents =
   {{{events}}}

@@ -1,6 +1,6 @@
 <br>
 <div class="card" style="">
-  <img src="{{event.imageUrl}}" class="card-img-top" alt="..." width="250px">
+  <img src="{{event.imageUrl}}" class="card-img-top" id="event-image" alt="..." width="250px">
   <div class="card-body">
     <h5 class="card-title">{{event.name}}</h5>
     <hr noshade>
@@ -10,9 +10,15 @@
 <hr noshade>
     <p class="card-text" id="event-attendance">There are currently {{event.attendance}} people attending this event.</p>
     {{#if isLoggedIn}}
-    <form action="/events/{{event._id}}/attendance/increase" method="post">
-      <button type="submit" class="btn btn-primary" id="isAttending">I am going!</button>
-    </form>
+      <form action="/events/{{event._id}}/attendance/increase" method="post">
+        <button type="submit" class="btn btn-primary" id="isAttending">I am going!</button>
+      </form>
+    {{/if}}
+
+    {{#if isLoggedIn}}
+      <form action="/events/{{event._id}}/delete" method="post">
+        <button type="submit" class="btn btn-primary" id="isAttending">Delete my event!</button>
+      </form>
     {{/if}}
   </div>
 </div>
