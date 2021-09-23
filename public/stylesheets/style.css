@@ -243,7 +243,8 @@ p {
   padding: 0 10px;
 }
 
-#nav-icon {
-  padding-right: 10px;
+.nav-icon {
+  padding-top: 3px;
+  padding-right: 1px
 
 }

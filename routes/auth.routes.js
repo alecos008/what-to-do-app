@@ -1,38 +1,23 @@
 //**test */
 const router = require("express").Router();
 const UserModel = require("../models/User.model");
-const axios = require("axios");
 const bcrypt = require("bcryptjs");
 
 // we need to configure the session :~)
 
 router.get("/signup", (req, res, next) => {
-  axios
-    .get("https://restcountries.eu/rest/v2/all")
-    .then((countries) => {
-      res.render("auth/signup.hbs", { countries: countries.data });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  res.render("auth/signup.hbs");
+
 });
 
 router.post("/signup", (req, res, next) => {
-  const { name, email, location, password } = req.body;
+  const { name, email, password } = req.body;
 
   //* User must fill all the fields in order to register
-  if (!name || !email || !location || !password) {
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then((countries) => {
-        res.render("auth/signup.hbs", {
-          countries: countries.data,
-          errorMessage: "Please fill all the fields",
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
+  if (!name || !email || !password) {
+    res.render("auth/signup.hbs", {
+      errorMessage: "Please fill all the fields",
+    });
     return;
   }
 
@@ -41,17 +26,9 @@ router.post("/signup", (req, res, next) => {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   if (!emailRegex.test(email)) {
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then((countries) => {
-        res.render("auth/signup.hbs", {
-          countries: countries.data,
-          errorMessage: "Please enter a valid email",
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
+    res.render("auth/signup.hbs", {
+      errorMessage: "Please enter a valid email",
+    });
     return;
   }
 
@@ -59,18 +36,10 @@ router.post("/signup", (req, res, next) => {
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
   if (!passwordRegex.test(password)) {
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then((countries) => {
-        res.render("auth/signup.hbs", {
-          countries: countries.data,
-          errorMessage:
-            "Password not strong enough! You need an uppercase, lowercase, and at least 8 characters",
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
+    res.render("auth/signup.hbs", {
+      errorMessage:
+        "Password not strong enough! You need an uppercase, lowercase, and at least 8 characters",
+    });
     return;
   }
   //* Checking if user exists
@@ -78,17 +47,9 @@ router.post("/signup", (req, res, next) => {
   UserModel.findOne({ email })
     .then((user) => {
       if (user) {
-        axios
-          .get("https://restcountries.eu/rest/v2/all")
-          .then((countries) => {
-            res.render("auth/signup.hbs", {
-              countries: countries.data,
-              errorMessage: "Email already taken",
-            });
-          })
-          .catch((err) => {
-            next(err);
-          });
+        res.render("auth/signup.hbs", {
+          errorMessage: "Email already taken",
+        });
         return;
       } else {
         //* Encrypting the password
@@ -99,7 +60,6 @@ router.post("/signup", (req, res, next) => {
         UserModel.create({
           name,
           email,
-          location,
           password: encryptedPassword,
         })
           .then((newUser) => {

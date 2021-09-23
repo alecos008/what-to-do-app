@@ -18,7 +18,7 @@
   <br />
   <select name="location" id="location">
     {{#each countries}}
-      <option value="{{this.latlng}}">{{this.name}}</option>
+      <option value="{{this.latlng}}">{{this.name.common}}</option>
     {{/each}}
   </select><br />
   <input type="datetime-local" name="date" id="date" /><br />

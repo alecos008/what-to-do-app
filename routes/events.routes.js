@@ -8,7 +8,7 @@ const fileUploader = require("../middlewares/cloudinary.config");
 
 router.get("/create", isLoggedIn, (req, res, next) => {
   axios
-    .get("https://restcountries.eu/rest/v2/all")
+    .get("https://restcountries.com/v3/all")
     .then((countries) => {
       EventType.find().then((eventCategories) => {
         res.render("events/create-event.hbs", {

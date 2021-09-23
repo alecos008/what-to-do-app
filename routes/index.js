@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const axios = require("axios").default;
 const EventType = require("../models/EventType.model");
 const fileUploader = require("../middlewares/cloudinary.config");
 

@@ -9,7 +9,6 @@ const UserSchema = new Schema({
     type: String,
     unique: true,
   },
-  location: String,
   password: String,
 });
 
