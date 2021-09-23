@@ -128,6 +128,7 @@ router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
 });
 
 router.post('/:id/delete', isLoggedIn, (req, res, next) => {
+  
    Event.findByIdAndDelete(req.params.id)
    .then(() => {
     res.redirect('/')

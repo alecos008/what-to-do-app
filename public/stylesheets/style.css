@@ -34,6 +34,7 @@ a {
   color: white;
   margin-left: 0px;
   display: flex;
+  
 }
 .index-section > p {
   text-align: center;
@@ -145,14 +146,11 @@ p {
 #nearYou {
   height: 50vh;
   margin-top: 10px;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 #createEventMap {
   height: 50vh;
-    margin-top: 10px;
-    margin-right: 150px;
-    margin-left: 150px;
+  margin-top: 10px;
+
 }
 
 .pulsating-circle {
@@ -243,10 +241,10 @@ p {
   font-size: 12px;
 }
 
-.navbar :before {
+/* .navbar :before {
   content: "|";
   padding: 0 10px;
-}
+} */
 
 .nav-icon {
   padding-top: 3px;
