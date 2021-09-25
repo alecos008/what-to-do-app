@@ -116,7 +116,11 @@ router.get("/:id", (req, res, next) => {
       if (loggedInUserId) {
         itsTheOwner = event.user_id.toString() === loggedInUserId.toString();
       }
-      res.render("events/details.hbs", { event, itsTheOwner, events: JSON.stringify([event]) });
+      res.render("events/details.hbs", {
+        event,
+        itsTheOwner,
+        events: JSON.stringify([event]),
+      });
     })
     .catch((err) => {
       next(err);
@@ -156,7 +160,11 @@ router.post(
     }
     Event.findByIdAndUpdate(
       req.params.id,
-      { ...req.body, imageUrl, location: { coordinates: [req.body.latitude, req.body.longitude] } },
+      {
+        ...req.body,
+        imageUrl,
+        location: { coordinates: [req.body.latitude, req.body.longitude] },
+      },
       { new: true }
     )
       .then((event) => {

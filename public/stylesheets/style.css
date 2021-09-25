@@ -80,18 +80,6 @@ p {
   border-radius: 20px 4px;
   margin: 0 0 10px 0;
 }
-/* Here we fix the display of the main p and navbar */
-@media (max-width: 400px) {
-  .index-section > p {
-    width: 310px;
-  }
-  .header {
-    width: 100vw;
-  }
-  .navbar {
-    margin-top: 1.7vh;
-  }
-}
 .category {
   display: flex;
   flex-direction: column;
@@ -159,7 +147,6 @@ p {
 #createEventMap {
   height: 50vh;
 }
-
 
 .pulsating-circle {
   position: absolute;
@@ -243,7 +230,7 @@ p {
 }
 
 .edit-btn {
-margin: 0 auto;
+  margin: 0 auto;
 }
 
 #event-attendance {
@@ -412,4 +399,20 @@ margin: 0 auto;
     margin-right: 0;
     font-weight: 600;
   }
+}
+
+/* Here we fix the display of the main p and navbar */
+@media (max-width: 400px) {
+  .index-section > p {
+    width: 310px;
+  }
+  .header {
+    width: 100vw;
+  }
+  .navbar {
+    margin-top: 1.7vh;
+  }
+}
+.card-img-top {
+  height: 50%;
 }
