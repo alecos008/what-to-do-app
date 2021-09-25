@@ -1,21 +1,24 @@
-<h2 class="page-title">Register</h2>
+<div class="register-page">
+  <h2 class="page-title">Register</h2>
 
-<form action="/auth/signup" method="post" id="signup-form">
-  <input type="text" name="name" id="name" placeholder="Name" />
-  <input
-    type="text"
-    name="email"
-    id="email"
-    placeholder="example@example.com"
-  />
-  <input
-    type="password"
-    name="password"
-    id="password"
-    placeholder="password"
-  />
+  <form action="/auth/signup" method="post" id="signup-form">
+    <input type="text" name="name" id="name" placeholder="Name" />
+    <input
+      type="text"
+      name="email"
+      id="email"
+      placeholder="example@example.com"
+    />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="password"
+    />
 
-  <button type="submit" id="signup-btn">Sign up</button>
-</form>
+    <button type="submit" id="signup-btn">Sign up</button>
+  </form>
 
-<p class="error-msg">{{errorMessage}}</p>
+  <p class="error-msg">{{errorMessage}}</p>
+
+</div>

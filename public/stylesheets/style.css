@@ -413,6 +413,9 @@ p {
     margin-top: 1.7vh;
   }
 }
-.card-img-top {
-  height: 50%;
+.register-page {
+  height: 53.5vh;
+}
+.login-page {
+  height: 53.5vh;
 }

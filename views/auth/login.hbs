@@ -1,18 +1,21 @@
-<h2 class="page-title">Login</h2>
+<div class="login-page">
 
-<form action="/auth/login" method="post" id="login-form">
-  <input
-    type="text"
-    name="email"
-    id="email"
-    placeholder="exmaple@example.com"
-  />
-  <input
-    type="password"
-    name="password"
-    id="password"
-    placeholder="password"
-  />
-  <button type="submit" id="login-btn">Log In!</button>
-</form>
-<p class="error-msg">{{errorMessage}}</p>
+  <h2 class="page-title">Login</h2>
+
+  <form action="/auth/login" method="post" id="login-form">
+    <input
+      type="text"
+      name="email"
+      id="email"
+      placeholder="exmaple@example.com"
+    />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="password"
+    />
+    <button type="submit" id="login-btn">Log In!</button>
+  </form>
+  <p class="error-msg">{{errorMessage}}</p>
+</div>
