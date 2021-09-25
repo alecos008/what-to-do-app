@@ -1,0 +1,34 @@
+<div id="createEventMap"></div>
+<form
+  action="/events/{{event._id}}/edit"
+  method="post"
+  id="create-event-form"
+  enctype="multipart/form-data"
+>
+  <input type="text" name="name" id="name" placeholder="Event name" value="{{event.name}}" />
+  <input type="text" name="latitude" id="latitude" hidden value="{{event.location.coordinates.[0]}}"/>
+  <input type="text" name="longitude" id="longitude" hidden value="{{event.location.coordinates.[1]}}"/>
+  <textarea
+    id="description"
+    name="description"
+    rows="10"
+    cols="50"
+    value="{{event.description}}"
+  ></textarea>
+  <br />
+  <input type="datetime-local" name="date" id="date" value="{{event.date}}"/><br />
+
+  <select name="type" id="select-type">
+    {{#each eventCategories}}
+      <option value="{{this._id}}" id="type">{{this.name}}</option>
+    {{/each}}
+  </select><br />
+
+  <input type="file" name="imageUrl" id="imageUrl" /><br />
+
+  <button type="submit" id="create-event-btn">Confirm Edition</button>
+</form>
+<p class="error-msg">{{errorMessage}}</p>
+
+<script src="/js/mapUtilities.js"></script>
+<script src="/js/createEventMap.js"></script>

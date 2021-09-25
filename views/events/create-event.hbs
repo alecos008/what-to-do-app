@@ -15,21 +15,21 @@
     cols="50"
     placeholder="Write down the description of your event."
   ></textarea>
-  <br />
+  
   <select name="location" id="location">
     {{#each countries}}
       <option value="{{this.latlng}}">{{this.name.common}}</option>
     {{/each}}
-  </select><br />
-  <input type="datetime-local" name="date" id="date" /><br />
+  </select>
+  <input type="datetime-local" name="date" id="date" />
 
   <select name="type" id="select-type">
     {{#each eventCategories}}
       <option value="{{this._id}}" id="type">{{this.name}}</option>
     {{/each}}
-  </select><br />
+  </select>
 
-  <input type="file" name="imageUrl" id="imageUrl" /><br />
+  <input type="file" name="imageUrl" id="imageUrl" />
 
   <button type="submit" id="create-event-btn">Create Event!</button>
 </form>

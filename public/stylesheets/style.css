@@ -63,6 +63,11 @@ a,
 p {
   margin: 0 0 10px 0;
 }
+
+.category img {
+  width: 100%;
+}
+
 .category > h2 {
   margin: 20px 0 5px 0;
 }
@@ -115,17 +120,20 @@ p {
   border: 1px solid green;
   border-radius: 50px 50px;
   padding-left: 10px;
+  margin-top: 3vh;
 }
 #imageUrl {
   border: 1px solid green;
   border-radius: 25px 25px;
   background-color: white;
+  margin-top: 3vh;
 }
 #description {
-  margin-top: 15px;
+  margin-top: 3vh;
   border: 1px solid green;
   border-radius: 25px 25px;
   padding-left: 5vw;
+  width: 90vw;
 }
 #signup-btn,
 #login-btn,
@@ -136,6 +144,7 @@ p {
   color: green;
   border: 1px solid green;
   border-radius: 20px 4px;
+  margin-top: 3vh;
 }
 .error-msg {
   margin: 2.5vh 0 0 5vw;
@@ -145,14 +154,12 @@ p {
   font-style: italic;
 }
 
-#nearYou {
-  height: 50vh;
-  margin-top: 10px;
-}
+#nearYou,
+#eventMap,
 #createEventMap {
   height: 50vh;
-  margin-top: 10px;
 }
+
 
 .pulsating-circle {
   position: absolute;
@@ -217,6 +224,7 @@ p {
 
 .card-text {
   color: black;
+  white-space: pre-line;
 }
 
 .card-date {
@@ -225,13 +233,17 @@ p {
 
 .card {
   margin: 0 auto;
-  background-color: rgba(165, 191, 227, 1);
+  background-color: #c5c8cb;
   width: 70%;
   margin-bottom: 4vh;
 }
 
 .btn-primary {
   background-color: rgba(243, 150, 193, 0.87);
+}
+
+.edit-btn {
+margin: 0 auto;
 }
 
 #event-attendance {

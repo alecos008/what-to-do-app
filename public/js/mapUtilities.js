@@ -17,8 +17,8 @@ const accuracyCircle = (latitude, longitude, accuracy, map) => {
   }).addTo(map);
 };
 
-const loadTheMap = (mapObject, latitude, longitude, accuracy, events = []) => {
-  mapObject.setView([latitude, longitude], 13);
+const loadTheMap = (mapObject, latitude, longitude, accuracy, events = [], latitudeOverride, longitudeOverride) => {
+  mapObject.setView([latitudeOverride || latitude, longitudeOverride || longitude], 13);
   L.tileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
     {

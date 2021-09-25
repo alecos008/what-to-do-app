@@ -5,14 +5,18 @@
 </div>
 
 <div class="categories-section">
-  <section class="category">
-    {{#each categories}}
-      <h2>{{this.name}}</h2>
-      <img src="{{this.imageUrl}}" alt="Category Image" width="250px" />
-      <p>{{this.description}}</p>
-      <a class="category-link" href="/events/categories/{{this._id}}">See all
-        events</a>
-    {{/each}}
-
+  <section class="categoryCard">
+    <div class="container">
+      <div class="row">
+        {{#each categories}}
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <h2>{{this.name}}</h2>
+            <img class="mb-3 w-100" src="{{this.imageUrl}}" alt="Category Image" />
+            <p class="mb-3">{{this.description}}</p>
+            <a class="category-link" href="/events/categories/{{this._id}}">See all events</a>
+          </div>
+        {{/each}}
+      </div>
+    </div>
   </section>
 </div>

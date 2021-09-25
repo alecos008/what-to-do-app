@@ -106,9 +106,17 @@ router.get("/near-you", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   const { id } = req.params;
+  let loggedInUserId;
+  if (req.session.user) {
+    loggedInUserId = req.session.user._id;
+  }
   Event.findById(id)
     .then((event) => {
-      res.render("events/details.hbs", { event });
+      let itsTheOwner = false;
+      if (loggedInUserId) {
+        itsTheOwner = event.user_id.toString() === loggedInUserId.toString();
+      }
+      res.render("events/details.hbs", { event, itsTheOwner, events: JSON.stringify([event]) });
     })
     .catch((err) => {
       next(err);
@@ -127,15 +135,47 @@ router.post("/:id/attendance/increase", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.post('/:id/delete', isLoggedIn, (req, res, next) => {
-  
-   Event.findByIdAndDelete(req.params.id)
-   .then(() => {
-    res.redirect('/')
-  })
-  .catch((err) => {
-    console.log("error deleting the event", err)
-  })
+router.get("/:id/edit", isLoggedIn, (req, res, next) => {
+  Event.findById(req.params.id)
+    .then((event) => {
+      res.render("events/edit", { event });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.post(
+  "/:id/edit",
+  isLoggedIn,
+  fileUploader.single("imageUrl"),
+  (req, res, next) => {
+    let imageUrl;
+    if (req.file) {
+      imageUrl = req.file.path;
+    }
+    Event.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, imageUrl, location: { coordinates: [req.body.latitude, req.body.longitude] } },
+      { new: true }
+    )
+      .then((event) => {
+        res.redirect(`/events/${event._id}`);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+);
+
+router.post("/:id/delete", isLoggedIn, (req, res, next) => {
+  Event.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log("error deleting the event", err);
+    });
 });
 
 module.exports = router;

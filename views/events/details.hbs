@@ -1,13 +1,17 @@
+<div id="eventMap"></div>
 <br>
 <div class="card" style="">
   <img src="{{event.imageUrl}}" class="card-img-top" id="event-image" alt="..." width="250px">
   <div class="card-body">
-    <h5 class="card-title">{{event.name}}</h5>
+    <h5 class="card-title"><strong>{{event.name}}</strong></h5>
+    <small>{{event.date}}</small>
     <hr noshade>
-    <h4 class="card-date" id="event-date">{{event.date}}</h4>
-    <p class="card-text">{{event.description}}
+    <p class="card-text mt-3">{{event.description}}
     </p>
-<hr noshade>
+    {{#if itsTheOwner}}
+    <a href="/events/{{event._id}}/edit">Edit</a>
+    <hr noshade>
+    {{/if}}
     <p class="card-text" id="event-attendance">There are currently {{event.attendance}} people attending this event.</p>
     {{#if isLoggedIn}}
       <form action="/events/{{event._id}}/attendance/increase" method="post">
@@ -15,10 +19,18 @@
       </form>
     {{/if}}
 
-    {{#if isLoggedIn}}
+
+
+    {{#if itsTheOwner}}
       <form action="/events/{{event._id}}/delete" method="post">
-        <button type="submit" class="btn btn-primary" id="isAttending">Delete my event!</button>
+        <button type="submit" class="btn btn-primary mt-3" id="isAttending">Delete my event!</button>
       </form>
     {{/if}}
   </div>
 </div>
+
+<script>
+  const allEvents = {{{events}}}
+</script>
+<script src="/js/mapUtilities.js"></script>
+<script src="/js/eventMap.js"></script>
