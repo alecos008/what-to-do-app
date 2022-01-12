@@ -17,9 +17,11 @@
       <a href="/events/{{event._id}}/edit">Edit</a>
       <hr noshade />
     {{/if}}
+
     <p class="card-text" id="event-attendance">There are currently
       {{event.attendance}}
       people attending this event.</p>
+
     {{#if isLoggedIn}}
       <form action="/events/{{event._id}}/attendance/increase" method="post">
         <button type="submit" class="btn btn-primary" id="isAttending">I am

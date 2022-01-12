@@ -411,6 +411,10 @@ p {
   }
   .navbar {
     margin-top: 1.7vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 10px;
   }
 }
 .register-page {
