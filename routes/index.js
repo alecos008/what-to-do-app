@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const EventType = require("../models/EventType.model");
 const fileUploader = require("../middlewares/cloudinary.config");
-
+//Added comment
 /* GET home page */
 router.get("/", (req, res, next) => {
   EventType.find()
